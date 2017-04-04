@@ -14,4 +14,4 @@ The following figure illustrates the above scenarios.
 
 ----
 
-![alt text](https://github.com/shtigran/FileDownloaderApplication/blob/master/Downloader.jpg "File Downloader Application")
+![alt text](https://github.com/shtigran/EntityFramework/blob/master/EF-overview.png "Entity Framework")
