@@ -13,3 +13,5 @@ Entity framework is useful in three scenarios. First, if you already have existi
 The following figure illustrates the above scenarios.
 
 ----
+
+![alt text](https://github.com/shtigran/FileDownloaderApplication/blob/master/Downloader.jpg "File Downloader Application")
