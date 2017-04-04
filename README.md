@@ -1,4 +1,4 @@
-# EntityFramework
+# Entity Framework
 
 Writing and managing ADO.Net code for data access is a tedious and monotonous job. Microsoft has provided an O/RM framework called "Entity Framework" to automate database related activities for your application.
 
