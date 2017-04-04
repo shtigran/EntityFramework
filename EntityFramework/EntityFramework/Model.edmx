@@ -15,6 +15,10 @@
         <EntityContainer Name="ModelContainer" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="PeopleSet" EntityType="Model.People" />
           <EntitySet Name="DetailsSet" EntityType="Model.Details" />
+          <AssociationSet Name="PeopleDetails" Association="Model.PeopleDetails">
+            <End Role="People" EntitySet="PeopleSet" />
+            <End Role="Details" EntitySet="DetailsSet" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="People">
           <Key>
@@ -24,6 +28,7 @@
           <Property Name="FirstName" Type="String" Nullable="false" />
           <Property Name="LastName" Type="String" Nullable="false" />
           <Property Name="Age" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Details" Relationship="Model.PeopleDetails" FromRole="People" ToRole="Details" />
         </EntityType>
         <EntityType Name="Details">
           <Key>
@@ -33,7 +38,12 @@
           <Property Name="Country" Type="String" Nullable="false" />
           <Property Name="City" Type="String" Nullable="false" />
           <Property Name="Phone" Type="String" Nullable="false" />
+          <NavigationProperty Name="People" Relationship="Model.PeopleDetails" FromRole="Details" ToRole="People" />
         </EntityType>
+        <Association Name="PeopleDetails">
+          <End Type="Model.People" Role="People" Multiplicity="1" />
+          <End Type="Model.Details" Role="Details" Multiplicity="1" />
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
