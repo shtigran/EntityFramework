@@ -8,7 +8,7 @@
   <EntityContainer Name="ModelStoreContainer">
     <EntitySet Name="PeopleSet" EntityType="Model.Store.PeopleSet" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="DetailsSet" EntityType="Model.Store.DetailsSet" store:Type="Tables" Schema="dbo" />
-    <AssociationSet Name="PeopleDetails" Association="Model.Store.PeopleDetails">
+    <AssociationSet Name="PeopleDetails1" Association="Model.Store.PeopleDetails1">
       <End Role="People" EntitySet="PeopleSet" />
       <End Role="Details" EntitySet="DetailsSet" />
     </AssociationSet>
@@ -21,7 +21,6 @@
     <Property Name="FirstName" Type="nvarchar(max)" Nullable="false" />
     <Property Name="LastName" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Age" Type="int" Nullable="false" />
-    <Property Name="Details_Id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="DetailsSet">
     <Key>
@@ -31,16 +30,17 @@
     <Property Name="Country" Type="nvarchar(max)" Nullable="false" />
     <Property Name="City" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Phone" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="People1_Id" Type="int" Nullable="false" />
   </EntityType>
-  <Association Name="PeopleDetails">
-    <End Role="People" Type="Model.Store.PeopleSet" Multiplicity="*" />
-    <End Role="Details" Type="Model.Store.DetailsSet" Multiplicity="1" />
+  <Association Name="PeopleDetails1">
+    <End Role="People" Type="Model.Store.PeopleSet" Multiplicity="1" />
+    <End Role="Details" Type="Model.Store.DetailsSet" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Details">
+      <Principal Role="People">
         <PropertyRef Name="Id" />
       </Principal>
-      <Dependent Role="People">
-        <PropertyRef Name="Details_Id" />
+      <Dependent Role="Details">
+        <PropertyRef Name="People1_Id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -51,7 +51,7 @@
         <EntityContainer Name="ModelContainer" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="PeopleSet" EntityType="Model.People" />
           <EntitySet Name="DetailsSet" EntityType="Model.Details" />
-          <AssociationSet Name="PeopleDetails" Association="Model.PeopleDetails">
+          <AssociationSet Name="PeopleDetails1" Association="Model.PeopleDetails1">
             <End Role="People" EntitySet="PeopleSet" />
             <End Role="Details" EntitySet="DetailsSet" />
           </AssociationSet>
@@ -64,7 +64,7 @@
           <Property Name="FirstName" Type="String" Nullable="false" />
           <Property Name="LastName" Type="String" Nullable="false" />
           <Property Name="Age" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Details" Relationship="Model.PeopleDetails" FromRole="People" ToRole="Details" />
+          <NavigationProperty Name="Details1" Relationship="Model.PeopleDetails1" FromRole="People" ToRole="Details" />
         </EntityType>
         <EntityType Name="Details">
           <Key>
@@ -74,11 +74,11 @@
           <Property Name="Country" Type="String" Nullable="false" />
           <Property Name="City" Type="String" Nullable="false" />
           <Property Name="Phone" Type="String" Nullable="false" />
-          <NavigationProperty Name="People" Relationship="Model.PeopleDetails" FromRole="Details" ToRole="People" />
+          <NavigationProperty Name="People1" Relationship="Model.PeopleDetails1" FromRole="Details" ToRole="People" />
         </EntityType>
-        <Association Name="PeopleDetails">
+        <Association Name="PeopleDetails1">
           <End Type="Model.People" Role="People" Multiplicity="1" />
-          <End Type="Model.Details" Role="Details" Multiplicity="1" />
+          <End Type="Model.Details" Role="Details" Multiplicity="0..1" />
         </Association>
       </Schema>
     </edmx:ConceptualModels>
@@ -106,11 +106,11 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <AssociationSetMapping Name="PeopleDetails" TypeName="Model.PeopleDetails" StoreEntitySet="PeopleSet">
-      <EndProperty Name="Details">
-        <ScalarProperty Name="Id" ColumnName="Details_Id" />
-      </EndProperty>
+    <AssociationSetMapping Name="PeopleDetails1" TypeName="Model.PeopleDetails1" StoreEntitySet="DetailsSet">
       <EndProperty Name="People">
+        <ScalarProperty Name="Id" ColumnName="People1_Id" />
+      </EndProperty>
+      <EndProperty Name="Details">
         <ScalarProperty Name="Id" ColumnName="Id" />
       </EndProperty>
     </AssociationSetMapping>

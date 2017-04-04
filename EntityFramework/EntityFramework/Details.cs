@@ -19,6 +19,6 @@ namespace EntityFramework
         public string City { get; set; }
         public string Phone { get; set; }
     
-        public virtual People People { get; set; }
+        public virtual People People1 { get; set; }
     }
 }

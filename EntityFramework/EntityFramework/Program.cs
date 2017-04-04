@@ -13,17 +13,15 @@ namespace EntityFramework
             using (var db = new ModelContainer())
             {
 
-                People man1 = new People();
-                man1.Age = 32;
-                man1.FirstName = "Pol";
-                man1.LastName = "Robson";
+                People man1 = new People() { Age = 24, FirstName = "Poll", LastName = "Nickson" };
 
-                People man2 = new People() { Age = 24, LastName = "Nickson", FirstName = "Jack", Details = new Details() { City = "Yervan", Phone = "077 345 678"}};
+                db.PeopleSet.RemoveRange(db.PeopleSet);
+                Console.WriteLine(db.PeopleSet.Count<People>());
 
                 db.PeopleSet.Add(man1);
-                db.PeopleSet.Add(man2);
+                db.SaveChanges();
 
-
+                Console.ReadKey();
             }
 
 

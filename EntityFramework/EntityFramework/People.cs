@@ -19,6 +19,6 @@ namespace EntityFramework
         public string LastName { get; set; }
         public int Age { get; set; }
     
-        public virtual Details Details { get; set; }
+        public virtual Details Details1 { get; set; }
     }
 }
