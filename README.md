@@ -22,4 +22,4 @@ EF provides you a model designer where you can design your DB model and then EF 
 
 # Different Approaches of Entity Framework
 
-
+Entity Framework provides three different approaches to deal with the model, and each one has its own pros and cons. Ambily Kavumkal Kamalasanan discusses the advantages of the Model, Database, and Code First approaches to modeling in Entity Framework 5.0. Entity Framework still has its share of issues and is not widely accepted yet - but through contributing to its ongoing development the community can make it more stable and increase its adoption.
