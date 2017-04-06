@@ -19,3 +19,7 @@ As per the above figure, EF creates data access classes for your existing databa
 EF can also create the database from your domain classes, thus you can focus on your domain-driven design.
 
 EF provides you a model designer where you can design your DB model and then EF creates database and classes based on your DB model.
+
+# Different Approaches of Entity Framework
+
+
